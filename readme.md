@@ -33,3 +33,38 @@ shell> tree
     | -- eksctl-config.yaml
     | -- Images
 ```
+4. Run the following command to create EKS cluster. 
+``` 
+shell> eksctl create cluster -f eksctl-config.yaml
+```
+5. Run the following command to check the status of EKS cluster. 
+```
+shell> aws eks describe-cluster --name mario-cluster --query "cluster.{Name: name, Status: status, Endpoint: endpoint, Version: version, DateOfCreation: createdAt}" --output table
+```
+6. Run the following command to update the kubeconfig file. 
+```
+shell> aws eks --region us-east-1 update-kubeconfig --name mario-cluster
+```
+7. Run the following command to apply the deployment.yaml file. 
+```
+shell> kubectl apply -f deployment.yaml
+``` 
+8. Run the following command to apply the service.yaml file. 
+```
+shell> kubectl apply -f service.yaml
+```
+9. Verify the service with the “kubectl describe service” command: 
+```
+shell> kubectl describe service mario-service
+```
+10. Destroy the EKS cluster with the following command. 
+```
+shell> eksctl delete cluster --name mario-cluster
+```
+
+# References
+- AWS EKSCTL: https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html
+- AWS EKS: https://aws.amazon.com/eks/
+- AWS IAM Authenticator: https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html
+- Kubectl: https://kubernetes.io/docs/tasks/tools/install-kubectl/
+
