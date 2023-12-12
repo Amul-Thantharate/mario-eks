@@ -13,14 +13,23 @@ This project is to deploy a Super Mario Game on AWS EKS (Elastic Kubernetes Serv
 - Kubectl
 - Git
 
-# Pre-requisites 
-
-1. You must have some basic knowledge of AWS EKS (Elastic Kubernetes Service) and Kubernetes. 
-2. You must have some basic knowledge of Python Flask framework.
-3. You must have some basic knowledge of Docker and git.
-
 # Steps 
 1. Create mario directory and change directory to mario directory. 
 ```
 shell> mkdir mario && cd mario
+```
+2. Git clone the Super Mario Game repository and also change directory to mario-eks directory. 
+```
+shell> git clone https://github.com/Amul-Thantharate/mario-eks.git 
+```
+3. Directory structure should look like this. 
+``` 
+shell> tree
+.
+└── mario-eks
+    | -- readme.md
+    | -- deployment.yaml
+    | -- service.yaml
+    | -- eksctl-config.yaml
+    | -- Images
 ```
